@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Log in | Smart Cloud Reminder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="auth-body">
+  <main class="auth">
+    <section class="auth-intro">
+      <div class="brand"><span class="brand-mark">&#128276;</span> Smart Cloud Reminder</div>
+      <h1>Never miss what matters.</h1>
+      <p>Save your reminders in the cloud, get alerted when they are due, and pick up on any device.</p>
+      <ul class="sample-list" aria-hidden="true">
+        <li><span class="dot high"></span><div><strong>Submit cloud computing record</strong><small>Today, 4:00 PM</small></div></li>
+        <li><span class="dot med"></span><div><strong>Team meeting for mini project</strong><small>Tomorrow, 10:30 AM</small></div></li>
+        <li class="is-done"><span class="dot low"></span><div><strong>Pay exam fee</strong><small>Completed</small></div></li>
+      </ul>
+    </section>
+
+    <section class="auth-panel">
+      <div class="auth-tabs" role="tablist">
+        <button id="tabLogin" class="active" role="tab" aria-selected="true">Log in</button>
+        <button id="tabRegister" role="tab" aria-selected="false">Create account</button>
+      </div>
+
+      <div id="configWarning" class="alert alert-warn" hidden>
+        Firebase is not set up yet. Open <code>js/firebase-config.js</code> and paste your Firebase project keys.
+      </div>
+      <div id="authMessage" class="alert" hidden></div>
+
+      <form id="loginForm" novalidate>
+        <label>Email
+          <input type="email" id="loginEmail" placeholder="you@college.edu" autocomplete="email" required>
+        </label>
+        <label>Password
+          <input type="password" id="loginPassword" placeholder="Your password" autocomplete="current-password" required>
+        </label>
+        <button type="submit" class="btn btn-primary btn-block">Log in</button>
+        <button type="button" id="forgotBtn" class="link-btn">Forgot password?</button>
+      </form>
+
+      <form id="registerForm" novalidate hidden>
+        <label>Full name
+          <input type="text" id="regName" placeholder="Your name" autocomplete="name" required>
+        </label>
+        <label>Email
+          <input type="email" id="regEmail" placeholder="you@college.edu" autocomplete="email" required>
+        </label>
+        <label>Password
+          <input type="password" id="regPassword" placeholder="At least 6 characters" autocomplete="new-password" required>
+        </label>
+        <label>Confirm password
+          <input type="password" id="regConfirm" placeholder="Re-enter password" autocomplete="new-password" required>
+        </label>
+        <button type="submit" class="btn btn-primary btn-block">Create account</button>
+      </form>
+    </section>
+  </main>
+  <script type="module" src="js/auth.js"></script>
+</body>
+</html>

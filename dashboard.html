@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Reminders | Smart Cloud Reminder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand"><span class="brand-mark">&#128276;</span> Smart Cloud Reminder</div>
+      <div class="topbar-right">
+        <div class="notif-wrap">
+          <button id="bellBtn" class="icon-btn" aria-label="Notifications" aria-expanded="false">
+            &#128172;<span id="bellBadge" class="badge" hidden>0</span>
+          </button>
+          <div id="notifPanel" class="notif-panel" hidden>
+            <div class="notif-head">
+              <strong>Notifications</strong>
+              <button id="clearAlerts" class="link-btn">Clear all</button>
+            </div>
+            <ul id="notifList" class="notif-list"></ul>
+            <div id="permRow" class="perm-row" hidden>
+              <span>Get alerts even when this tab is in the background.</span>
+              <button id="enablePerm" class="btn btn-small btn-primary">Turn on</button>
+            </div>
+          </div>
+        </div>
+        <span id="userName" class="user-name"></span>
+        <button id="logoutBtn" class="btn btn-ghost btn-small">Log out</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="page-head">
+      <div>
+        <h1 id="greeting">Hello</h1>
+        <p class="muted" id="todayText"></p>
+      </div>
+      <button id="addBtn" class="btn btn-primary">+ Add reminder</button>
+    </div>
+
+    <section class="stats" aria-label="Summary">
+      <div class="stat"><span id="statUpcoming" class="stat-num">0</span><span>Upcoming</span></div>
+      <div class="stat stat-overdue"><span id="statOverdue" class="stat-num">0</span><span>Overdue</span></div>
+      <div class="stat stat-done"><span id="statDone" class="stat-num">0</span><span>Completed</span></div>
+    </section>
+
+    <section class="toolbar">
+      <input type="search" id="search" placeholder="Search reminders" aria-label="Search reminders">
+      <select id="filterCategory" aria-label="Filter by category">
+        <option value="">All categories</option>
+        <option>Study</option><option>Work</option><option>Personal</option><option>Health</option><option>Other</option>
+      </select>
+      <select id="filterPriority" aria-label="Filter by priority">
+        <option value="">All priorities</option>
+        <option value="high">High</option><option value="medium">Medium</option><option value="low">Low</option>
+      </select>
+    </section>
+
+    <div class="list-tabs" role="tablist">
+      <button class="active" data-tab="upcoming" role="tab">Upcoming <span id="countUpcoming" class="count">0</span></button>
+      <button data-tab="completed" role="tab">Completed <span id="countCompleted" class="count">0</span></button>
+    </div>
+
+    <ul id="list" class="reminder-list"></ul>
+    <div id="empty" class="empty" hidden></div>
+  </main>
+
+  <!-- Add / edit reminder -->
+  <dialog id="modal">
+    <form id="reminderForm" method="dialog" novalidate>
+      <div class="modal-head">
+        <h2 id="modalTitle">Add reminder</h2>
+        <button type="button" id="closeModal" class="icon-btn" aria-label="Close">&times;</button>
+      </div>
+      <div id="formError" class="alert alert-error" hidden></div>
+      <label>Title
+        <input type="text" id="fTitle" maxlength="80" placeholder="e.g. Submit assignment" required>
+      </label>
+      <label>Notes (optional)
+        <textarea id="fDesc" rows="2" maxlength="300" placeholder="Add a short note"></textarea>
+      </label>
+      <div class="row">
+        <label>Date <input type="date" id="fDate" required></label>
+        <label>Time <input type="time" id="fTime" required></label>
+      </div>
+      <div class="row">
+        <label>Category
+          <select id="fCategory">
+            <option>Study</option><option>Work</option><option>Personal</option><option>Health</option><option>Other</option>
+          </select>
+        </label>
+        <label>Priority
+          <select id="fPriority">
+            <option value="low">Low</option><option value="medium" selected>Medium</option><option value="high">High</option>
+          </select>
+        </label>
+      </div>
+      <div class="modal-actions">
+        <button type="button" id="cancelBtn" class="btn btn-ghost">Cancel</button>
+        <button type="submit" id="saveBtn" class="btn btn-primary">Save reminder</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div id="toasts" class="toasts" aria-live="polite"></div>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
