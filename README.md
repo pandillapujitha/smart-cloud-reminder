@@ -1,5 +1,11 @@
 # Smart Cloud Reminder and Notification System
 
+## 🚀 Live Demo
+
+**[Smart Cloud Reminder – Live Demo](https://smart-cloud-reminder.web.app)**
+
+> Try the deployed application online using Firebase Hosting.
+
 A simple cloud-based reminder app built with **HTML, CSS, JavaScript and Firebase**.
 Users register, log in, and manage reminders that are stored in the cloud (Firestore),
 so they are available from any device.
